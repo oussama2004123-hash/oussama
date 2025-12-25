@@ -37,28 +37,6 @@
             overflow-x: hidden;
         }
 
-        body[dir="rtl"] {
-            direction: rtl;
-        }
-
-        body[dir="rtl"] .header-content {
-            flex-direction: row-reverse;
-        }
-
-        body[dir="rtl"] .nav-links a {
-            margin-left: 0;
-            margin-right: 32px;
-        }
-
-        body[dir="rtl"] .hero-content {
-            flex-direction: row-reverse;
-        }
-
-        body[dir="rtl"] .whatsapp-float {
-            right: auto;
-            left: 30px;
-        }
-
         h1, h2, h3, h4 {
             font-family: 'Roboto', sans-serif;
             font-weight: 600;
@@ -566,6 +544,210 @@
                 text-align: left;
                 margin-bottom: 0;
             }
+        }
+
+        /* ==============================
+           ARABIC (RTL) MOBILE FIXES
+           ============================== */
+
+        /* Apply RTL layout only when Arabic language is selected */
+        html[lang="ar"] body {
+            direction: rtl;
+            text-align: right;
+        }
+
+        /* Fix mobile navigation alignment for Arabic */
+        html[lang="ar"] .mobile-nav {
+            left: auto;
+            right: 0;
+            text-align: right;
+        }
+
+        html[lang="ar"] .mobile-nav a {
+            padding-right: 20px;
+            padding-left: 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* Fix header layout for mobile RTL */
+        html[lang="ar"] .header-content {
+            flex-direction: row-reverse;
+        }
+
+        html[lang="ar"] .language-switcher {
+            margin-right: 0;
+            margin-left: 20px;
+            flex-direction: row-reverse;
+        }
+
+        /* Hero section RTL fixes for mobile */
+        html[lang="ar"] .hero-content {
+            flex-direction: column;
+        }
+
+        html[lang="ar"] .hero-text {
+            text-align: right;
+        }
+
+        html[lang="ar"] .hero h1 {
+            background: linear-gradient(90deg, var(--accent), #fff);
+            -webkit-background-clip: text;
+            background-clip: text;
+        }
+
+        /* Fix hero buttons alignment for RTL */
+        html[lang="ar"] .hero-buttons {
+            justify-content: flex-end;
+        }
+
+        /* Fix skill items border position for RTL */
+        html[lang="ar"] .skill-item {
+            border-left: none;
+            border-right: 4px solid var(--accent);
+        }
+
+        /* Fix form labels and inputs alignment for RTL */
+        html[lang="ar"] .form-group label {
+            text-align: right;
+        }
+
+        html[lang="ar"] .form-group input,
+        html[lang="ar"] .form-group textarea {
+            text-align: right;
+        }
+
+        /* Fix WhatsApp float position for RTL */
+        html[lang="ar"] .whatsapp-float {
+            right: auto;
+            left: 30px;
+        }
+
+        /* Fix service cards text alignment for RTL */
+        html[lang="ar"] .service-card {
+            text-align: right;
+        }
+
+        /* Fix work items overflow for RTL */
+        html[lang="ar"] .work-item {
+            overflow: hidden;
+        }
+
+        /* Fix portfolio content alignment for RTL */
+        html[lang="ar"] .portfolio-content {
+            text-align: right;
+        }
+
+        /* Fix contact info alignment for RTL */
+        html[lang="ar"] .contact-info {
+            text-align: right;
+        }
+
+        /* ==============================
+           MOBILE-SPECIFIC RTL FIXES
+           ============================== */
+        @media (max-width: 767px) {
+            /* Ensure proper flex direction for mobile hero */
+            html[lang="ar"] .hero-content {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            /* Fix hero image positioning */
+            html[lang="ar"] .hero-image {
+                margin: 0 auto;
+            }
+            
+            /* Fix hero text alignment */
+            html[lang="ar"] .hero-text {
+                text-align: center;
+                width: 100%;
+            }
+            
+            /* Center hero buttons on mobile */
+            html[lang="ar"] .hero-buttons {
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            
+            /* Fix grid alignment for RTL on mobile */
+            html[lang="ar"] .skills-grid,
+            html[lang="ar"] .services-grid,
+            html[lang="ar"] .my-works-grid,
+            html[lang="ar"] .portfolio-grid {
+                direction: rtl;
+            }
+            
+            /* Ensure grid items don't overflow */
+            html[lang="ar"] .skill-item,
+            html[lang="ar"] .service-card,
+            html[lang="ar"] .work-item,
+            html[lang="ar"] .portfolio-card {
+                text-align: right;
+                overflow: hidden;
+            }
+            
+            /* Fix form layout on mobile */
+            html[lang="ar"] .contact-form {
+                align-items: flex-end;
+            }
+            
+            /* Fix mobile menu button positioning */
+            html[lang="ar"] .mobile-menu-btn {
+                order: -1;
+            }
+            
+            /* Fix language switcher in mobile header */
+            html[lang="ar"] .header-content > div:last-child {
+                flex-direction: row-reverse;
+            }
+        }
+
+        /* ==============================
+           TABLET & DESKTOP RTL ADJUSTMENTS
+           ============================== */
+        @media (min-width: 768px) {
+            /* Restore row-reverse for desktop hero */
+            html[lang="ar"] .hero-content {
+                flex-direction: row-reverse;
+            }
+            
+            html[lang="ar"] .hero-text {
+                text-align: right;
+            }
+            
+            /* Fix desktop navigation for RTL */
+            html[lang="ar"] .nav-links a {
+                margin-left: 0;
+                margin-right: 32px;
+            }
+            
+            /* Fix desktop language switcher position */
+            html[lang="ar"] .nav-links .language-switcher {
+                margin-left: 32px;
+                margin-right: 0;
+            }
+            
+            /* Fix contact container grid for RTL */
+            @media (min-width: 992px) {
+                html[lang="ar"] .contact-container {
+                    direction: rtl;
+                }
+                
+                html[lang="ar"] .contact-info {
+                    text-align: right;
+                }
+            }
+        }
+
+        /* Ensure images don't overflow in RTL */
+        html[lang="ar"] img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Fix any potential overflow issues */
+        html[lang="ar"] .container {
+            overflow-x: hidden;
         }
     </style>
 </head>
